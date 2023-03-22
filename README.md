@@ -8,5 +8,5 @@ Just put your initials next to the item you would like to work on (feel free to 
 
 1. Support Ticketing System (MM - I have used a ticketing system at my previous internship)
 2. 4-Way Traffic Light - ZB - JD
-3. Ordering System - JD - SO
+3. Ordering System - JD - SO - MM
 4. Order form management system - NY
