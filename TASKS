@@ -1,0 +1,9 @@
+TASKS:
+
+Have an initial state of all menu items (using a database or useState in React (or both))
+Database could include: Item name, item ID, number of item at a current time, special requests, price of menu items
+Should be able to return to a previous state if changing or editing order
+Should also include current VIP points
+Maybe include previous orders/reservations
+
+
