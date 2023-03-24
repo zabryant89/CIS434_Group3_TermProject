@@ -6,4 +6,23 @@ Should be able to return to a previous state if changing or editing order
 Should also include current VIP points
 Maybe include previous orders/reservations
 
+Processing order → Form (all menu items selection, inventory of items/ingredients) 
+GUI for user input 
+Click on menu pictures and or menu name to select/ click again to deselect
+Quantity of item (buttons for increasing and decreasing quantity)
+Option for special processing of order
+VIP Card
+Confirmation of order
+Edit/change order options show up after order has been confirmed
+Prompt for gifts and/or promotional items based on what is selected
+Updates database/state
+Returning a receipt with:
+Time of confirmation
+Item
+Price
+Tax
+VIP points earned (if applicable)
+Checkout
+Discount code field
+Payment entry
 
