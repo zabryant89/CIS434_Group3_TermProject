@@ -10,3 +10,5 @@ Just put your initials next to the item you would like to work on (feel free to 
 2. 4-Way Traffic Light - ZB - JD - BM
 3. Ordering System - JD - SO - MM - BM
 4. Order form management system - NY - SO
+
+The group has decided on the ordering system.  Google Drive link to our rough draft for task list (courtesy of Sarah): https://docs.google.com/document/d/1dOELwiwpiYFfZ2WXYEsrxJHZd59Wg-sOU9ieZ-ShWjw/edit 
