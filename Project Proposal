@@ -34,8 +34,28 @@ Abstract - (Mustafa Muhammad)
   have been broken down into a modular format so that each group member can communicate and see how said tasks shall be distributed amongst one another. 
   Throughout the process the TA Shenthan or Professor Essa will be contacted if we need to ask questions or request specifications for the project. Using what is 
   taught in the coursework or group will utilize software engineering practices to ensure proper completion of the project at hand. Lastly, a final presentation will
-  be given to show our finished product.
+  be given to show our finished product
   
+Intro - (Mustafa Muhammad)
+
+	With the world progressing more and more towards a digital future, items in our everyday lives are becoming digitized. This includes career fairs, shopping,
+	and of course going out to eat at a restaurant. Menus have become digital not only on websites, but even in-house. Rather than sipping on a beverage provided 
+	by the waiter while deciding what you want to eat from a laminated sheet, people are now simply looking at the menu from the app through their phones. Even 
+	more so, people can request table service, order through the app, make changes, and more without the need to find and ask a waiter for what they need. The 
+	action of using an application makes the whole restaurant experience more streamlined and efficient. Current implementations of this design include any 
+	restaurants which require you to use applications from which to order from. Uber Eats, a widely used mobile application actually brings many restaurant 
+	portfolios into one app making the process of searching for an individual restaurant and then using their application much easier. Currently, all fast-food 
+	chains have mobile and web applications from which you can order food including McDonald’s, Chipotle, Taco Bell, and many more to say the least. Forbes
+	writes in How Uber Eats is Turning Into a Billion-Dollar Business to Rival Grubhub that “Uber Eats is on track to deliver some $10 billion worth of food 
+	worldwide this year, up from an estimated $6 billion-plus last year”. Alex Samuely writes in McDonald’s 7M app downloads highlights effectiveness of relevant 
+	incentives that “McDonald’s revealed it has seen more than seven million downloads of its mobile application since the fall 2015 launch”. Previous work from
+	group members with building such applications including courses such as CIS 408 (Internet Programming), currently building an application for their senior 
+	design project, and just recently building an expense tracker web application with React in CIS 434 (Software Engineering). The significance of taking part 
+	in this project is to develop and enhance our understanding of web applications rather than presenting a new state of the art solution ready for the market. 
+	By taking what we have already learned from previous coursework and building on top of it with current software engineering practices we aim to learn new 
+	skills and at the same time develop a professional level solution. We plan to use React as a base for our frontend development along with Node.js to tackle 
+	the backend. To handle our database management system we will use MySQL as it pertains to our group’s experience. All in all, from this project we hope to
+	learn more about software engineering as a whole while individually developing our skills for the industry.  
 
 Methodology - (Jovan Djordjevic / )
 	As previously stated, we will be using React to build a web application for our ordering system. Node.js will be used to handle the backend portion of the web
