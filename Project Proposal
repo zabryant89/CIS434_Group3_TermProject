@@ -11,7 +11,7 @@ Individual Contributions Breakdown
 	➢ 
 	○ Contribute to Proposal Report
 
-	➢ 
+	➢ Jovan Djordjevic
 	○ Contribute to Proposal Report
 	
 	➢ 
@@ -35,4 +35,13 @@ Abstract - (Mustafa Muhammad)
   Throughout the process the TA Shenthan or Professor Essa will be contacted if we need to ask questions or request specifications for the project. Using what is 
   taught in the coursework or group will utilize software engineering practices to ensure proper completion of the project at hand. Lastly, a final presentation will
   be given to show our finished product.
+  
 
+Methodology - (Jovan Djordjevic / )
+	As previously stated, we will be using React to build a web application for our ordering system. Node.js will be used to handle the backend portion of the web
+app. To create our initial design, we primarily will be using HTML and CSS. We all have experience using these languages due to our previous project in CIS 434, so
+there should be at most minimal issues while working with them. Any additional updates to the interface could also be implemented with JavaScript but likely will not
+be needed. At the moment, we have created a temporary template that will be referenced once we begin developing the web app. We have some ideas to store all of the
+data that will be used in our project, including using some databases such as MySQL, Firebase, or simply implementing the JavaScript LocalStorage function throughout
+the application. As we build our application, we will be making sure to call back to the method we use to store our data to be sure that all the data can be saved
+efficiently.
