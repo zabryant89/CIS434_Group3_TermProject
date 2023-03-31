@@ -12,3 +12,6 @@ Just put your initials next to the item you would like to work on (feel free to 
 4. Order form management system - NY - SO
 
 The group has decided on the ordering system.  Google Drive link to our rough draft for task list (courtesy of Sarah): https://docs.google.com/document/d/1dOELwiwpiYFfZ2WXYEsrxJHZd59Wg-sOU9ieZ-ShWjw/edit 
+
+Project proposal (draft):
+https://docs.google.com/document/d/1plhRiAiOG8_PJ4gKJxXM-iN5uK9Q4uq6otK-7w362Cc/edit
