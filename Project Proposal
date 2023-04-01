@@ -59,6 +59,37 @@ Intro - (Mustafa Muhammad)
 	the backend. To handle our database management system we will use MySQL as it pertains to our group’s experience. All in all, from this project we hope to
 	learn more about software engineering as a whole while individually developing our skills for the industry.  
 
+Objectives
+	The specifications listed by the customer, in our case the instructor, have been laid out in our project requirements.  These specifications give us key 
+objectives that allow us to lay out milestones needed to have a working application.  The milestones are as follows:
+
+-Initial States and Design
+-First pass for functionality
+-Second pass for functionality
+-Final product and report
+
+Initial States and Design
+	At this stage we will clarify the specifics of what each portion of the ordering system needs to look like and how they will function.  The specific tasks that
+need to be understood at this stage are: Orders, Change tables/call service, VIP Cards, Appointments, and Checkout.  This is still leaving out some specifics with 
+abnormal processing and additional services (such as gifts or promotional items).  On top of this we need to plan on the data storage methods that work best for our 
+project.  From the design perspective we still need to account for those remaining two tasks to ensure a smooth implementation.
+
+First Pass
+	For the first pass we will tackle two specific tasks: first levels of functionality of everything listed in the previous objective and prepare the 
+implementation for the abnormal processing/additional services.  This objective is accomplished under the assumption everything listed in the first task is working and 
+communicating between each other.  Another stage that completes this objective is having our design and plan in place for the remaining tasks functionality.  Data 
+storage is not necessary at this time and to account for it we will hard code test values for now.
+
+Second Pass
+	On the second pass the app should have all the pieces working together, including data storage, and bugs are still expected.  This task is considered complete
+when additional services and abnormal processing has been implemented with everything else.  Refactoring and planning for the final presentation is required at this 
+step.  We can consider the project complete at the minimum requirements from this point.
+
+Final Product / Report
+	This objective focuses on fixing any bugs, cleaning up the code, and having the project ready for final presentation.  Our report will be finalized in this
+stage as well.  This objective will be considered complete when the report is submitted.
+
+
 Methodology - (Jovan Djordjevic / )
 	As previously stated, we will be using React to build a web application for our ordering system. Node.js will be used to handle the backend portion of the web
 app. To create our initial design, we primarily will be using HTML and CSS. We all have experience using these languages due to our previous project in CIS 434, so
