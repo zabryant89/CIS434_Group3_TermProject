@@ -15,3 +15,6 @@ The group has decided on the ordering system.  Google Drive link to our rough dr
 
 Project proposal (draft):
 https://docs.google.com/document/d/1plhRiAiOG8_PJ4gKJxXM-iN5uK9Q4uq6otK-7w362Cc/edit
+
+Project proposal presentation (draft):
+https://csuohio-my.sharepoint.com/:p:/g/personal/2775911_vikes_csuohio_edu/EYfcdfbZ0xtBm_kErVEJ-TABUm2Ytd1BUGPMUpY2e-frtg?rtime=pxCRflM020g 
