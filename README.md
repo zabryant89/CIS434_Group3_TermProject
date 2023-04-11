@@ -18,3 +18,13 @@ https://docs.google.com/document/d/1plhRiAiOG8_PJ4gKJxXM-iN5uK9Q4uq6otK-7w362Cc/
 
 Project proposal presentation (draft):
 https://csuohio-my.sharepoint.com/:p:/g/personal/2775911_vikes_csuohio_edu/EYfcdfbZ0xtBm_kErVEJ-TABUm2Ytd1BUGPMUpY2e-frtg?rtime=pxCRflM020g 
+
+## Task List
+| Task                                       | Primary | Secondaries |
+|--------------------------------------------|---------|-------------|
+| Order Screen (menu)                        | Mustafa |             |
+| Change Tables/Call Service                 | Sarah   |             |
+| VIP (membership, points earnings)          | Jovan   | Zachary     |
+| Reservations (make, change, choose table)  | Nelia   |             |
+| Checkout (including VIP points spending)   | Zachary |             |
+| Data Storage (inventory, VIP members, etc) | Brian   | Zachary     |
