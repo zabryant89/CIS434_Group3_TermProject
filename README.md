@@ -25,6 +25,6 @@ https://csuohio-my.sharepoint.com/:p:/g/personal/2775911_vikes_csuohio_edu/EYfcd
 | Order Screen (menu)                        | Mustafa |             |
 | Change Tables/Call Service                 | Sarah   |             |
 | VIP (membership, points earnings)          | Jovan   | Zachary     |
-| Reservations (make, change, choose table)  | Nelia   |             |
+| Reservations (make, change, choose table)  | Nelia   | Sarah       |
 | Checkout (including VIP points spending)   | Zachary |             |
 | Data Storage (inventory, VIP members, etc) | Brian   | Zachary     |
