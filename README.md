@@ -22,7 +22,7 @@ https://csuohio-my.sharepoint.com/:p:/g/personal/2775911_vikes_csuohio_edu/EYfcd
 ## Task List
 | Task                                       | Primary | Secondaries |
 |--------------------------------------------|---------|-------------|
-| Order Screen (menu)                        | Mustafa |             |
+| Order Screen (menu)                        | Mustafa | Brian       |
 | Change Tables/Call Service                 | Sarah   |             |
 | VIP (membership, points earnings)          | Jovan   | Zachary     |
 | Reservations (make, change, choose table)  | Nelia   | Sarah       |
