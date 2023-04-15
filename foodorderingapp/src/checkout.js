@@ -1,41 +1,59 @@
-//Zachary Bryant - Primary
-//temporarily using test values
+//Zachary Bryant
+//USE: handle checking out of items.  For now it just displays a very simple UI of how it would calculate items.
+//NEED: functionality for entering a card or using VIP points.
+//      -hard code use cases: card # 1234 always has enough funds, card # 6789 always declined
+//      -legitimate UI
+import React, { useState, useEffect } from 'react';
 
-//global vars/consts
-const cartItems = new Array;
-const totalPrice = 0.00;
+function Checkout() {
+    const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0.0);
 
-//test values
-const menuItem = {
-    name: nam,
-    price: pric
-};
-
-function MenuItem(nam, pric){
-    this.name = nam;
-    this.price = pric;
-}
-
-var food1 = new MenuItem("steak", 20.00);
-var food2 = new MenuItem("chicken", 12.12);
-var food3 = new MenuItem("super food", 100.50);
-
-//this function will receive a list/array of items from the cart when entering checkout
-function receiveCart(){
-    //logic to input the list into the global constant, use push method
-    cartItems.push(food1);
-    cartItems.push(food2);
-    cartItems.push(food3);
-}
-
-//below will calculate the total price from the list of selections in the cart
-function calcTotal(){
-    //logic to cycle through each item, add its price to the total
-    //for loop
-    for (i = 0; i < cartItems.length; i++){
-        totalPrice += cartItems[i].price;
+    class MenuItem {
+        constructor(nam, pric) {
+            this.name = nam;
+            this.price = pric;
+        }
     }
 
-    console.log(totalPrice);
+    var food1 = new MenuItem("steak", 20.00);
+    var food2 = new MenuItem("chicken", 12.12);
+    var food3 = new MenuItem("super food", 100.50);
+
+    function receiveCart() {
+        console.log("building list of food items");
+        setCartItems([food1, food2, food3]);
+    }
+
+    function calcTotal() {
+        console.log("calculating...");
+        let total = cartItems.reduce((acc, item) => acc + item.price, 0);
+        setTotalPrice(total);
+        console.log("total: " + total);
+        console.log("total price: " + totalPrice);
+    }
+
+    useEffect(() => {
+        console.log("Checkout loaded, calling receiveCart");
+        receiveCart();
+    }, []);
+
+    useEffect(() => {
+        console.log("Cart items changed, recalculating total");
+        calcTotal();
+    }, [cartItems]);
+
+    return (
+        <div>
+            <h1>Checkout</h1>
+            <ul>
+                {cartItems.map((item, index) => (
+                    <li key={index}>{item.name}: ${item.price.toFixed(2)}</li>
+                ))}
+            </ul>
+            <p>Total price: ${totalPrice.toFixed(2)}</p>
+        </div>
+    );
 }
 
+export default Checkout;

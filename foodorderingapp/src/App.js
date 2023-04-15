@@ -1,7 +1,15 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Checkout from './checkout';
 
 function App() {
+  const [showCheckout, setShowCheckout] = useState(false);
+
+  const handleCheckout = () =>{
+    setShowCheckout(true);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +25,9 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleCheckout}>I'm a button</button>
       </header>
+      {showCheckout && <Checkout />}
     </div>
   );
 }
