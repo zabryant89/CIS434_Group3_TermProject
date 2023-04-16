@@ -1,11 +1,10 @@
 import {useState} from "react"
 
-export default function CallSerive(){
+export default function CallService(){
 
     const [serivce, setService] = useState(false);
 
    const handleService = (event) =>{
-    setService(event.target.value);
     setService(true); 
    }
 
