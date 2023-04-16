@@ -3,34 +3,74 @@ import './Style/Table.css'
 
 export default function Table(){
 
-    const [table, setTableSelection] = useState(false);
-    const[value, setValue] = useState("Table 1");
+    let intialTableState = [
+        {id: 0, selected: true, display:"selectedTable"},
+        {id: 1, selected: false, display:  "Table"},
+        {id: 2, selected: false, display: "Table"},
+        {id: 3, selected: false, display: "Table"},
+        {id: 4, selected: false, display: "Table"},
+        {id: 5, selected: true, display: "Table"},
+        {id: 6, selected: false, display: "selectedTable"},
+        {id: 7, selected: false, display: "Table"}
+        
+    ]
 
-    const handleTableSelection = (event) =>{
-     setTableSelection(event.target.value);
-     setTableSelection(true); 
-    } 
+    const [table, setTableSelection] = useState(intialTableState);
+    const [sitTable, setSitTable] = useState('')
+
+    const handleTableSelection = (val) =>{
+        const determineShow = table.map(shows => 
+            {
+                if(shows.id === val)
+                {
+                   
+               return {
+                   ...shows,
+                   selected: true,
+                   display: "selectedTable"
+               };
+               } else{
+                return {
+                 ...shows
+                };
+            }
+         
+           });
+
+      
+                setTableSelection(determineShow);
+                setSitTable(val + 1);
+       
+
+    }
+
+let tableDis = table.map(
+    (d => d.display)
+  );
+
 
 
     return(
         <div className="Tables">
-            <h1 className="table-text">Please select which table you would like</h1>
+            <h1 className="table-text">Please click which table you would like</h1>
+            <h1>You have selected to sit at Table {sitTable}</h1>
             <div className="allTables">
             <div className="topLeftTables">
-           <div><button type="button" className="Table" onClick={handleTableSelection}>{value}</button></div>
-            <div><button type="button" className="Table" onClick={handleTableSelection}>Table 2</button></div>
+           <div><button type="button" className= {tableDis[0]} onClick={() =>handleTableSelection(0)}>Table 1</button></div>
+            <div><button type="button" className= {tableDis[1]} onClick={() => handleTableSelection(1)}>Table 2</button></div>
             </div>
             <div className="topRightTables">
-            <div><button type="button" className="Table" onClick={handleTableSelection}>Table 3</button></div>
-           <div> <button type="button" className="Table" onClick={handleTableSelection}>Table 4</button> </div>
+            <div><button type="button" className ={tableDis[2]} onClick={() => handleTableSelection(2)}>Table 3</button></div>
+           <div> <button type="button" className ={tableDis[3]} onClick={() => handleTableSelection(3)}>Table 4</button> </div>
            </div>
             <div className="bottomTables">
-           <div className="bt"><button type="button" className="Table" onClick={handleTableSelection}>Table 5</button></div>
-            <div className="bt"><button type="button" className="Table" onClick={handleTableSelection}>Table 6</button></div>
-            <div className="bt"><button type="button" className="Table" onClick={handleTableSelection}>Table 7</button></div>
-            <div className="bt"><button type="button" className="Table" onClick={handleTableSelection}>Table 8</button></div>
+           <div className="bt"><button type="button" className ={tableDis[4]} onClick={() => handleTableSelection(4)}>Table 5</button></div>
+            <div className="bt"><button type="button" className ={tableDis[5]} onClick={() => handleTableSelection(5)}>Table 6</button></div>
+            <div className="bt"><button type="button" className= {tableDis[6]} onClick={() => handleTableSelection(6)}>Table 7</button></div>
+            <div className="bt"><button type="button" className ={tableDis[7]} onClick={() => handleTableSelection(7)}>Table 8</button></div>
             </div>
             </div>
+            
         </div>
        
     );
