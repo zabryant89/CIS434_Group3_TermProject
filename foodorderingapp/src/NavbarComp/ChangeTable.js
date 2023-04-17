@@ -15,8 +15,22 @@ export default function Table(){
         
     ]
 
-    const [table, setTableSelection] = useState(intialTableState);
+
+    function createIntialTableState(){
+        
+        if(localStorage.getItem("Table-data")){
+            return JSON.parse(localStorage.getItem("Table-data"))
+        }else{
+           
+            return intialTableState;
+        }       
+        
+    }
+
+
+    const [table, setTableSelection] = useState(createIntialTableState);
     const [sitTable, setSitTable] = useState('')
+  
 
     const handleTableSelection = (val) =>{
         const determineShow = table.map(shows => 
@@ -39,6 +53,8 @@ export default function Table(){
 
       
                 setTableSelection(determineShow);
+             
+                localStorage.setItem("Table-data", JSON.stringify(determineShow));
                 setSitTable(val + 1);
        
 
@@ -47,6 +63,8 @@ export default function Table(){
 let tableDis = table.map(
     (d => d.display)
   );
+
+
 
 
 

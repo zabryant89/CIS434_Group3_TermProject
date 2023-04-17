@@ -13,12 +13,16 @@ ul{
   
   }
 
-  button{
+  .buttonNav{
     font-size: 30px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color:  rgb(67, 178, 195);
-    border:  5px;
     color: white;
-    border-color: violet;
     cursor: pointer;
+    border: none;
+  }
+
+  .buttonNav:hover{
+
+    background-color: violet;
   }

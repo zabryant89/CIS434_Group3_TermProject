@@ -7,6 +7,13 @@
  
 }
 
-
+button{
+  font-size: 30px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color:  rgb(67, 178, 195);
+  color: white;
+  cursor: pointer;
+  border: none;
+}
 
 

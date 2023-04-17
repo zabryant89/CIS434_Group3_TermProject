@@ -51,11 +51,11 @@ export default function Nav(){
     return(
         <div className="navbar">
         <ul className="NavBarList">
-              <li><button type="button" onClick={()=>handleShowNavItem(0)}>Reservations </button></li>
-                <li><button type="button" onClick={()=>handleShowNavItem(1)} >Change Table</button> </li>
-              <li> <button type="button" onClick={()=>handleShowNavItem(2)} >Call Service </button> </li>
-              <li><button type="button" onClick={()=>handleShowNavItem(3)} > Deals </button></li>
-               <li> <button type="button" onClick={()=>handleShowNavItem(4)} >Order </button></li>
+              <li><button className="buttonNav" onClick={()=>handleShowNavItem(0)}>Reservations </button></li>
+                <li><button className="buttonNav" onClick={()=>handleShowNavItem(1)} >Change Table</button> </li>
+              <li> <button className="buttonNav" onClick={()=>handleShowNavItem(2)} >Call Service </button> </li>
+              <li><button className="buttonNav" onClick={()=>handleShowNavItem(3)} > Deals </button></li>
+               <li> <button className="buttonNav" onClick={()=>handleShowNavItem(4)} >Order </button></li>
      
     </ul>
 
