@@ -1,3 +1,5 @@
+// All console.log statements will be replaced once it's pushed to main
+
 //test values
 var user1 = new VIPUser("1112", "password1");
 var user2 = new VIPUser("1113", "password2");
@@ -9,8 +11,9 @@ class VIPUser {
     }
 }
 
-
-
+function signUp(){
+    
+}
 
 
 // test values 
