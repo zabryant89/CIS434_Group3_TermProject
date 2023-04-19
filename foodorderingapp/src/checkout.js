@@ -23,18 +23,21 @@ function signUp(){
 
 function logIn(inputID,passID){
     // Goes through the entire array
-    for (i= 0; i<(userList.length-1);i++){
+    for (i= 0; i<=(userList.length-1);i++){
         // First checks if the user ID is in the array
-        if (userList.username.includes(inputID, i)){
-            // Then checks if the password matches the given user
-            if (userList.password[i] = passID){
-
-            }
+        // Then checks if the password matches the given user
+        if ((userList[i].username == inputID) && (userList[i].password == passID)){
+            console.log("Logged in!");
+            // Replace with code to view and use points in checkout
+            return 0;
         }
 
-    }        
+    }
+    // Informs the user of an incorrect input
+    return console.log("Invalid Username/Password!");     
 }
 
+logIn("1113","password2");
 
 // test values 
 // $1 spent is equal to 10 points
