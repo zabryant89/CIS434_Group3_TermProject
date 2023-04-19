@@ -1,18 +1,20 @@
 // All console.log statements will be replaced once it's pushed to main
-
-//test values
-var user1 = new VIPUser("1112", "password1");
-var user2 = new VIPUser("1113", "password2");
-
-class VIPUser {
+class User{
     constructor(username,password){
         this.username = username;
         this.password = password;
     }
 }
 
+//test values
+const userList = [];
+userList.push(new User("1112", "password1"));
+userList.push(new User("1113", "password2"));
+console.log(userList[0].username);
+
 function signUp(){
-    
+    //When clicked
+
 }
 
 
