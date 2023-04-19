@@ -1,4 +1,5 @@
 // All console.log statements will be replaced once it's pushed to main
+
 class User{
     constructor(username,password){
         this.username = username;
@@ -6,18 +7,32 @@ class User{
     }
 }
 
-
 const userList = [];
 
 //test values for users
+
 userList.push(new User("1112", "password1"));
 userList.push(new User("1113", "password2"));
 console.log(userList[0].username);
 console.log(userList[1].password);
 
 function signUp(){
-    //When clicked
 
+
+}
+
+function logIn(inputID,passID){
+    // Goes through the entire array
+    for (i= 0; i<(userList.length-1);i++){
+        // First checks if the user ID is in the array
+        if (userList.username.includes(inputID, i)){
+            // Then checks if the password matches the given user
+            if (userList.password[i] = passID){
+
+            }
+        }
+
+    }        
 }
 
 
