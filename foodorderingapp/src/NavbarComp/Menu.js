@@ -1,4 +1,4 @@
-export default function Deals(){
+export default function Menu(){
 
 
     return(

@@ -1,4 +1,5 @@
 import {useState} from "react"
+import "./Style/Service.css"
 
 export default function CallService(){
 
@@ -36,8 +37,6 @@ export default function CallService(){
    }
 
    let showAr = service.map(     (s) => s.shown  );
-
-   console.log(showAr)
   
 
     return(

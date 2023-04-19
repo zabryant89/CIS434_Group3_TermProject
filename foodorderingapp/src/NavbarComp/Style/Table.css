@@ -31,11 +31,11 @@
 .selectedTable{
   font-size: 64px;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color:  rgb(3, 31, 36);
+  background-color:  rgb(72, 82, 83);
   border:  5px;
   color: white;
   border-color: violet;
-  opacity: 30%;
+  cursor:not-allowed;
 }
 
 
@@ -66,7 +66,5 @@
     align-items: flex-end;
     justify-content: space-between;
   }
-  
-  
   
   

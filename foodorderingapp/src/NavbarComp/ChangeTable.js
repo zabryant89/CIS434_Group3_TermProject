@@ -9,8 +9,8 @@ export default function Table(){
         {id: 2, selected: false, display: "Table"},
         {id: 3, selected: false, display: "Table"},
         {id: 4, selected: false, display: "Table"},
-        {id: 5, selected: true, display: "Table"},
-        {id: 6, selected: false, display: "selectedTable"},
+        {id: 5, selected: false, display: "Table"},
+        {id: 6, selected: true, display: "selectedTable"},
         {id: 7, selected: false, display: "Table"}
         
     ]
@@ -19,7 +19,7 @@ export default function Table(){
     function createIntialTableState(){
         
         if(localStorage.getItem("Table-data")){
-            return JSON.parse(localStorage.getItem("Table-data"))
+            return JSON.parse(localStorage.getItem("Table-data"));
         }else{
            
             return intialTableState;
@@ -29,8 +29,7 @@ export default function Table(){
 
 
     const [table, setTableSelection] = useState(createIntialTableState);
-    const [sitTable, setSitTable] = useState('')
-  
+    const [tableMessage, setTableMessage] = useState('');
 
     const handleTableSelection = (val) =>{
         const determineShow = table.map(shows => 
@@ -53,9 +52,11 @@ export default function Table(){
 
       
                 setTableSelection(determineShow);
-             
+
+               setTableMessage('You have selected Table ' + (val + 1))
+                
                 localStorage.setItem("Table-data", JSON.stringify(determineShow));
-                setSitTable(val + 1);
+
        
 
     }
@@ -64,28 +65,41 @@ let tableDis = table.map(
     (d => d.display)
   );
 
-
-
-
+  
+let buttonDis = table.map(
+  b => b.selected
+);
+const handleMouseEnter = (val) => {
+ 
+    if(table[val-1].selected){
+        setTableMessage('Table ' + val + ' is unavaliable');
+    }else{
+        setTableMessage('You are about to select Table ' + val);
+    }
+        
+    
+       
+     
+}
 
     return(
         <div className="Tables">
             <h1 className="table-text">Please click which table you would like</h1>
-            <h1>You have selected to sit at Table {sitTable}</h1>
+            <h1>{tableMessage}</h1>
             <div className="allTables">
             <div className="topLeftTables">
-           <div><button type="button" className= {tableDis[0]} onClick={() =>handleTableSelection(0)}>Table 1</button></div>
-            <div><button type="button" className= {tableDis[1]} onClick={() => handleTableSelection(1)}>Table 2</button></div>
+           <div onMouseEnter={() =>handleMouseEnter(1)}  ><button type="button" disabled ={buttonDis[0]} className= {tableDis[0]} onClick={() =>handleTableSelection(0)}>Table 1</button></div>
+            <div onMouseEnter={() =>handleMouseEnter(2)}><button type="button" disabled = {buttonDis[1]} className= {tableDis[1]} onClick={() => handleTableSelection(1)}>Table 2</button></div>
             </div>
             <div className="topRightTables">
-            <div><button type="button" className ={tableDis[2]} onClick={() => handleTableSelection(2)}>Table 3</button></div>
-           <div> <button type="button" className ={tableDis[3]} onClick={() => handleTableSelection(3)}>Table 4</button> </div>
+            <div onMouseEnter={() =>handleMouseEnter(3)}><button type="button" disabled ={buttonDis[2]} className ={tableDis[2]} onClick={() => handleTableSelection(2)}>Table 3</button></div>
+           <div onMouseEnter={() =>handleMouseEnter(4)}> <button type="button" disabled ={buttonDis[3]} className ={tableDis[3]} onClick={() => handleTableSelection(3)}>Table 4</button> </div>
            </div>
             <div className="bottomTables">
-           <div className="bt"><button type="button" className ={tableDis[4]} onClick={() => handleTableSelection(4)}>Table 5</button></div>
-            <div className="bt"><button type="button" className ={tableDis[5]} onClick={() => handleTableSelection(5)}>Table 6</button></div>
-            <div className="bt"><button type="button" className= {tableDis[6]} onClick={() => handleTableSelection(6)}>Table 7</button></div>
-            <div className="bt"><button type="button" className ={tableDis[7]} onClick={() => handleTableSelection(7)}>Table 8</button></div>
+           <div onMouseEnter={()=>handleMouseEnter(5)}className="bt"><button type="button" disabled ={buttonDis[4]} className ={tableDis[4]} onClick={() => handleTableSelection(4)}>Table 5</button></div>
+            <div onMouseEnter={()=>handleMouseEnter(6)}className="bt"><button type="button" disabled ={buttonDis[5]} className ={tableDis[5]} onClick={() => handleTableSelection(5)}>Table 6</button></div>
+            <div onMouseEnter={()=>handleMouseEnter(7)}className="bt"><button type="button" disabled ={buttonDis[6]} className= {tableDis[6]} onClick={() => handleTableSelection(6)}>Table 7</button></div>
+            <div onMouseEnter={()=>handleMouseEnter(8)} className="bt"><button type="button" disabled ={buttonDis[7]} className ={tableDis[7]} onClick={() => handleTableSelection(7)}>Table 8</button></div>
             </div>
             </div>
             
