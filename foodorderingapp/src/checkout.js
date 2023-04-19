@@ -6,11 +6,14 @@ class User{
     }
 }
 
-//test values
+
 const userList = [];
+
+//test values for users
 userList.push(new User("1112", "password1"));
 userList.push(new User("1113", "password2"));
 console.log(userList[0].username);
+console.log(userList[1].password);
 
 function signUp(){
     //When clicked
