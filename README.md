@@ -23,8 +23,11 @@ https://csuohio-my.sharepoint.com/:p:/g/personal/2775911_vikes_csuohio_edu/EYfcd
 | Task                                       | Primary | Secondaries |
 |--------------------------------------------|---------|-------------|
 | Order Screen (menu)                        | Mustafa |             |
-| Change Tables/Call Service                 | Sarah   |             |
+| Change Tables/Call Service                 | Sarah   | Jovan       |
 | VIP (membership, points earnings)          | Jovan   | Zachary     |
-| Reservations (make, change, choose table)  | Nelia   |             |
+| Reservations (make, change, choose table)  | Nelia   | Sarah       |
 | Checkout (including VIP points spending)   | Zachary |             |
 | Data Storage (inventory, VIP members, etc) | Brian   | Zachary     |
+
+## Progress Report
+Link to progress: https://docs.google.com/document/d/177GCSC4zswW3Sf8oOywWz7PMQQYixjqzHuVCvt6sz5I/edit
