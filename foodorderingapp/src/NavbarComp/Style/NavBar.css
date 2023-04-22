@@ -2,6 +2,7 @@ ul{
     list-style: none;
     font-size: 35px;
     color: whitesmoke;
+    margin-top: 0%;
   }
   
   .NavBarList{
@@ -10,6 +11,7 @@ ul{
     justify-content: space-evenly;
     align-items: center;
     margin-top: 0%;
+   padding: 0%;
   }
 
   .buttonNav{
@@ -25,7 +27,7 @@ ul{
 
   .buttonNav:hover{
 
-    background-color: violet;
+    background-color: magenta;
   }
 
 
