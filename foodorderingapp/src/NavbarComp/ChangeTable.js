@@ -17,7 +17,7 @@ export default function Table(){
 
 
     function createIntialTableState(){
-        
+        //localStorage.clear(); //debugging: just used to reset to initial state!
         if(localStorage.getItem("Table-data")){
             return JSON.parse(localStorage.getItem("Table-data"));
         }else{

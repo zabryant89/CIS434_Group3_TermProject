@@ -11,7 +11,7 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
     const [totalPrice, setTotalPrice] = useState(0.0);
     const [returning, setReturning] = useState(true); //if not returning, we are here!
     const [isVisible, setIsVisible] = useState(true);
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [userLoggedIn, setUserLoggedIn] = useState(true);
     const [paying, setPaying] = useState(false);
     const [cardNumber, setCardNumber] = useState('');
     const [vipPoints, setVipPoints] = useState(100);
