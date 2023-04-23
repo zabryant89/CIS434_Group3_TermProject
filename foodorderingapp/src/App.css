@@ -16,6 +16,8 @@ button{
   color: white;
   cursor: pointer;
   border: none;
+  padding: 5px;
+  margin-top: 2px;
 }
 
 

@@ -4,17 +4,18 @@ import './Style/Table.css'
 export default function Table(){
 
     let intialTableState = [
-        {id: 0, selected: true, display:"selectedTable"},
+        {id: 0, selected: false, display:"Table"},
         {id: 1, selected: false, display:  "Table"},
         {id: 2, selected: false, display: "Table"},
         {id: 3, selected: false, display: "Table"},
         {id: 4, selected: false, display: "Table"},
         {id: 5, selected: false, display: "Table"},
-        {id: 6, selected: true, display: "selectedTable"},
+        {id: 6, selected: false, display: "Table"},
         {id: 7, selected: false, display: "Table"}
         
     ]
 
+    
 
     function createIntialTableState(){
         //localStorage.clear(); //debugging: just used to reset to initial state!
@@ -69,6 +70,7 @@ let tableDis = table.map(
 let buttonDis = table.map(
   b => b.selected
 );
+
 const handleMouseEnter = (val) => {
  
     if(table[val-1].selected){
@@ -77,9 +79,7 @@ const handleMouseEnter = (val) => {
         setTableMessage('You are about to select Table ' + val);
     }
         
-    
-       
-     
+      
 }
 
     return(

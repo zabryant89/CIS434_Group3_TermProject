@@ -32,7 +32,7 @@ export default function CallService(){
            }
        });
           
-        (val !== 2) ? alert('You have requested service!') : alert('You have cancelled service request')
+        //(val !== 2) ? alert('You have requested service!') : alert('You have cancelled service request')
             setService(determineShow);
    }
 
