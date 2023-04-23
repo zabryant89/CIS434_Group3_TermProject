@@ -19,8 +19,10 @@ export default function VIP(){
     // Moves to signinpage and always updates with currentUser values
     useEffect(() => {
         localStorage.setItem('log', JSON.stringify(loggedIn));
-        document.getElementById("currUser").innerHTML = userList[currentUser].username;
-        document.getElementById("currPoints").innerHTML = userList[currentUser].points;
+        if (loggedIn){
+            document.getElementById("currUser").innerHTML = userList[currentUser].username;
+            document.getElementById("currPoints").innerHTML = userList[currentUser].points;
+        }
     }, [loggedIn]);
 
     useEffect(() => {
