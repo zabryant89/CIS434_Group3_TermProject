@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './Style/Menu.css'
 
 const foodOptionsData = [  { id: 1, name: 'Pizza', price: '$10.99', description: 'Delicious pizza with your choice of toppings.' },  { id: 2, name: 'Burger', price: '$6.99', description: 'Juicy burger with all the fixings.' },  { id: 3, name: 'Tacos', price: '$8.99', description: 'Tasty tacos with your choice of meat and toppings.' },  { id: 4, name: 'Salad', price: '$5.99', description: 'Fresh salad with your choice of dressing.' },  { id: 5, name: 'Sandwich', price: '$7.99', description: 'Delicious sandwich with your choice of meats and veggies.' },];
 
@@ -27,8 +27,10 @@ function Menu() {
     setOrder([]);
   };
 
-  const handleRemoveFromOrder = (food) => {
-    setOrder(order.filter((item) => item.id !== food.id));
+  const handleRemoveFromOrder = (index) => {
+    const newOrder = [...order];
+    newOrder.splice(index, 1);
+    setOrder(newOrder);
   };
 
   return (
@@ -72,7 +74,7 @@ function Menu() {
               <div className="order-item-info">
               <div className="order-item-name"style={{color:'black'}}>{food.name}</div>
             <div className="order-item-price" style={{color:'black'}}>{food.price}</div>
-            {food.instructions && <div className="order-item-instructions">Special Instructions: {food.instructions}</div>}
+            {food.instructions && <div className="order-item-instructions" style={{color:"blue"}}>Special Instructions: {food.instructions}</div>}
           </div>
           <div className="order-item-actions">
             <button onClick={() => handleRemoveFromOrder(index)} className="order-item-remove-button">
