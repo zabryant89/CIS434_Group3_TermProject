@@ -4,18 +4,18 @@ import { useState, useEffect} from 'react';
 export default function VIP(){
     const[userName, setUserName] = useState('');
     const[passWord, setPassWord] = useState('');
+    const[totalPoints, setPoints] = useState(500);
     const[loggedIn, setLoggedIn] = useState(false);
+    const[userList, setUserList] = useState([]);
     
-    class User{
-        constructor(username,password, points){
-            this.username = username;
-            this.password = password;
-            this.points = points;
-        }
+    // Updates list of all accounts
+    const updateList = () => {
+        setUserList([...userList, {
+            username: userName,
+            password: passWord,
+            points: totalPoints
+        }]);
     }
-    
-    // List of all accounts
-    var userList = [];
 
     function signUp(e){
         e.preventDefault();
@@ -23,11 +23,16 @@ export default function VIP(){
         for (var i= 0; i<=(userList.length-1);i++){
             // Doesn't allow username if it already exists
             if (userList[i].username == userName){
+                setUserName('');
+                setPassWord('');
                 return alert("Username already taken!");
             }
         }
-        // If username isn't taken, creates an account for the user 
-        userList.push(new User(userName,passWord,500));
+        // Sets the user's initial points to 500
+        setPoints(500);
+        // If username isn't taken, creates an account for the user        
+        updateList(userName,passWord,totalPoints); 
+        //userList.push(new User(userName,passWord,500));
         console.log(userList);     
         alert("User " +userName+ "'s account was created! 500 free points added!");
         return;
@@ -51,6 +56,8 @@ export default function VIP(){
             }
         }
         // Informs the user of an incorrect input
+        setUserName('');
+        setPassWord('');
         return alert("Invalid Username/Password!");     
     }
 
@@ -99,20 +106,14 @@ export default function VIP(){
     // Test for correct value
     spendPoints(300);
     obtainPoints();
-    */
-    var user1 = new User("account1", "password1",1500);
-    userList.push(user1);
-    user1 = new User("account2", "password2",5200);
-    userList.push(user1);
-    user1 = new User("account3", "password3",5300);
-    userList.push(user1);
+*/
 
     return(
         <>
         <div id="signIn" className={`SigninBox ${(!loggedIn) ? '': 'hidden'}`}>
             <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
             <h1 align="center"> <b>Password</b><input className="infoBox" id="passInput" type="password" required minLength="8" maxLength="20" value={passWord} onChange={e => setPassWord(e.target.value)}/></h1>
-            <button type="submit" className="signinButton" onClick={(e) => { logIn(e); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = ""; } }>Sign in</button>
+            <button type="submit" className="signinButton" onClick={(e) => { logIn(e); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = "";} }>Sign in</button>
             <button type="submit" className="signinButton" onClick={(e) => { signUp(e); } }>Sign Up</button>
         </div>
         <div id ="Account" className={`AccountBox ${(loggedIn) ? '': 'hidden'}`}>
