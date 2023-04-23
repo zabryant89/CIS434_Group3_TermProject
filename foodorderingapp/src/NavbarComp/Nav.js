@@ -59,7 +59,7 @@ export default function Nav(){
               <li> <button className="buttonNav" onClick={()=>handleShowNavItem(3)} >Call Service </button> </li>
               <li><button className="buttonNav" onClick={()=>handleShowNavItem(4)} > Order </button></li>
        
-               <li> <button className="buttonNavSpecial" onClick={()=>handleShowNavItem(5)} >Sign in </button></li>
+               <li> <button className="buttonNavSpecial" onClick={()=>handleShowNavItem(5)} > VIP </button></li>
      
     </ul>
     <div> {showAr[0] && (<Menu />)}</div>
