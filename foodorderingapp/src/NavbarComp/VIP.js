@@ -1,11 +1,11 @@
 import './Style/VIP.css'
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 
 export default function VIP(){
     const[userName, setUserName] = useState('');
     const[passWord, setPassWord] = useState('');
     const[loggedIn, setLoggedIn] = useState(false);
-
+    
     class User{
         constructor(username,password, points){
             this.username = username;
@@ -13,11 +13,12 @@ export default function VIP(){
             this.points = points;
         }
     }
-
+    
     // List of all accounts
     var userList = [];
 
-    function signUp(){
+    function signUp(e){
+        e.preventDefault();
         // Goes through the entire array to check for same username
         for (var i= 0; i<=(userList.length-1);i++){
             // Doesn't allow username if it already exists
@@ -26,21 +27,14 @@ export default function VIP(){
             }
         }
         // If username isn't taken, creates an account for the user 
-        if(userList != null){
-            var user2 = new User(userName,passWord,500);
-            userList.push(user2);
-        } else {
-            var user1 = new User(userName, passWord,500);
-            userList.push(user1);
-        }
-        
+        userList.push(new User(userName,passWord,500));
         console.log(userList);     
-
         alert("User " +userName+ "'s account was created! 500 free points added!");
         return;
     }
 
-    function logIn(){
+    function logIn(e){
+        e.preventDefault();
         // Goes through the entire array
         for (var i= 0; i<=(userList.length-1);i++){
             // First checks if the user ID is in the array
@@ -60,7 +54,8 @@ export default function VIP(){
         return alert("Invalid Username/Password!");     
     }
 
-    function logOut(){
+    function logOut(e){
+        e.preventDefault();
         setLoggedIn(false);
         currentUser = null;
         alert("Successfully logged out!");
@@ -105,20 +100,20 @@ export default function VIP(){
     spendPoints(300);
     obtainPoints();
     */
-    var user1 = new User("jovan", "password1",1500);
-    var user2 = new User("jovan2", "password2",5200);
-    var user3 = new User("jovan3", "password3",5300);
+    var user1 = new User("account1", "password1",1500);
     userList.push(user1);
-    userList.push(user2);
-    userList.push(user3);
+    user1 = new User("account2", "password2",5200);
+    userList.push(user1);
+    user1 = new User("account3", "password3",5300);
+    userList.push(user1);
 
     return(
         <>
         <div id="signIn" className={`SigninBox ${(!loggedIn) ? '': 'hidden'}`}>
             <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
             <h1 align="center"> <b>Password</b><input className="infoBox" id="passInput" type="password" required minLength="8" maxLength="20" value={passWord} onChange={e => setPassWord(e.target.value)}/></h1>
-            <button type="submit" className="signinButton" onClick={() => { logIn(); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = ""; } }>Sign in</button>
-            <button type="submit" className="signinButton" onClick={() => { signUp(); } }>Sign Up</button>
+            <button type="submit" className="signinButton" onClick={(e) => { logIn(e); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = ""; } }>Sign in</button>
+            <button type="submit" className="signinButton" onClick={(e) => { signUp(e); } }>Sign Up</button>
         </div>
         <div id ="Account" className={`AccountBox ${(loggedIn) ? '': 'hidden'}`}>
             <h1 align="center">Account Information</h1>
@@ -126,7 +121,7 @@ export default function VIP(){
             <p id = "currUser">User</p>
             <h2 align="center">Current Points: </h2>
             <p id = "currPoints">0</p>
-            <button type="submit" className="signinButton" onClick={() => { logOut(); } }>Log Out</button>
+            <button type="submit" className="signinButton" onClick={(e) => { logOut(e); } }>Log Out</button>
         </div>
         </>
     );
