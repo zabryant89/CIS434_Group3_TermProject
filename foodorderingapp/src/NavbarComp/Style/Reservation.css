@@ -60,3 +60,10 @@ select{
   color: white;
   padding: 0.5%;
 }
+
+.resButton{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 2%;
+}

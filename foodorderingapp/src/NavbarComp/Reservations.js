@@ -10,7 +10,10 @@ const [phone, setPhone] = useState('')
 const [table, setTable] = useState(-1)
 
 const [show, setShow] = useState(true); 
-
+const [showEdit, setShoWEdit] = useState(false); 
+const [showBoth, setShowBoth] = useState(true);
+const [message, setMessage] = useState('');
+const [editBut, setEditBut] = useState(false);
 
 // eslint-disable-next-line
 const [tableD, setTableD] = useState((localStorage.getItem("Table-data") ? JSON.parse(localStorage.getItem("Table-data")) : -1));
@@ -31,7 +34,7 @@ const intialTableState = [
 
   const handleSubmit = () => {
 
-  const res = [{
+  let res = [{
             Rname: name,
             Rphone: phone,
             Rtable: Number(table),
@@ -100,9 +103,57 @@ if(tableD !== -1){
 
   }
 
+  const handleEdit = ()=>{
+    setShoWEdit(true);
+    setShowBoth(false);
+    setPhone('');
+    setTable(0);
+    setMessage(''); 
+  }
+  
+  const findRes = ()=>{
+
+   const newRes = JSON.parse(localStorage.getItem(phone));
+
+  
+    if(JSON.parse(localStorage.getItem(phone))){
+    const n = newRes.map(r => r.Rname);
+    const t = newRes.map(r => r.Rtable);
+    if( (Number(t) === -1)|| (Number(t) === 0) ){
+      setMessage('We have not found a reservation with the entered phone number');
+      setEditBut(false);
+    } else{
+    
+     setMessage('We have found a reservation for ' + n + ' at Table ' + t);
+      setEditBut(true);
+    }
+    }
+    else{
+      setMessage('We have not found a reservation with the entered phone number');
+      setEditBut(false);
+    }
+
+  }
+
+  const editRes = ()=>{
+    setShow(true);
+    setShowBoth(true);
+    setShoWEdit(false);
+
+    localStorage.removeItem(phone);
+    console.log('Removed item from storage');
+  }
+
+  const goBack = ()=>{
+    setShow(true);
+    setShowBoth(true);
+    setShoWEdit(false);
+    setPhone(''); 
+  }
+
     return(
     <div>
-      {show && (<div className="reservation-form">
+      {show && showBoth && (<div className="reservation-form">
       <h1>Would you like to make a reservation?</h1>
       <h1>Please enter the following</h1>
         <div className="form-group">
@@ -146,7 +197,7 @@ if(tableD !== -1){
         </div>
         <button type="submit" onClick={() =>handleSubmit()}>Make Reservation</button>
       </div> )}
-      {!show && (
+      {!show && showBoth && (
         <div className="resApprovalMessage"> 
 
        <h1>Thank you for your reservation {name}! </h1>
@@ -154,13 +205,40 @@ if(tableD !== -1){
        <h1>Your estimated wait time is 20 minutes</h1>
 
        <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready. ": "when Table " + table +" is ready."} </h1>
-
-        <button onClick={handleAnother}>Make another reservation</button>
-
+        <div className="resButtons">
+       <div> <button onClick={handleAnother}>Make another reservation</button> </div>
+  
+       <div> <button onClick={handleEdit}>Edit reservation</button> </div>
+        </div>
+        
         </div>
       )}
+  {showEdit && ( <div className="reservation-form">
+ <h1>Please enter your phone number to edit your reservation</h1>
 
+ <div className="form-group">
+          <label>Phone #:  </label>
+          <input
+            type="text"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder='123-456-7890'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+     
+      
+        <button type="submit" onClick={() =>findRes()}>Find Reservation</button>
+        <h1>{message}</h1>
 
+<div className="resButtons">
+      <div>  <button type="submit" onClick={() =>goBack()}>Go Back to Making a Reservation</button> </div>
+        
+      {editBut && ( <div><button type="submit" onClick={() =>editRes()}>Edit Reservation</button> </div>) }
+</div>
+ </div> )}
+      
 
     </div>
   );
