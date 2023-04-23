@@ -31,9 +31,7 @@ export default function VIP(){
         // Sets the user's initial points to 500
         setPoints(500);
         // If username isn't taken, creates an account for the user        
-        updateList(userName,passWord,totalPoints); 
-        //userList.push(new User(userName,passWord,500));
-        console.log(userList);     
+        updateList(userName,passWord,totalPoints);   
         alert("User " +userName+ "'s account was created! 500 free points added!");
         return;
     }
