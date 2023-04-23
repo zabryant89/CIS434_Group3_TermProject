@@ -28,6 +28,13 @@ export default function VIP(){
                 return alert("Username already taken!");
             }
         }
+        // Checks username+password length
+        if (userName.length < 5){
+            return alert("The username needs to be between 5-10 characters!");
+        }
+        if (passWord.length < 8){
+            return alert("The password needs to be between 8-20 characters!");
+        }
         // Sets the user's initial points to 500
         setPoints(500);
         // If username isn't taken, creates an account for the user        
@@ -109,7 +116,7 @@ export default function VIP(){
     return(
         <>
         <div id="signIn" className={`SigninBox ${(!loggedIn) ? '': 'hidden'}`}>
-            <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
+            <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" minlength = "5" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
             <h1 align="center"> <b>Password</b><input className="infoBox" id="passInput" type="password" required minLength="8" maxLength="20" value={passWord} onChange={e => setPassWord(e.target.value)}/></h1>
             <button type="submit" className="signinButton" onClick={(e) => { logIn(e); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = "";} }>Sign in</button>
             <button type="submit" className="signinButton" onClick={(e) => { signUp(e); } }>Sign Up</button>
