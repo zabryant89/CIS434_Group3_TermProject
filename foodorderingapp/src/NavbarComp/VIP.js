@@ -1,13 +1,32 @@
 import './Style/VIP.css'
-import { useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 export default function VIP(){
     const[userName, setUserName] = useState('');
     const[passWord, setPassWord] = useState('');
     const[totalPoints, setPoints] = useState(500);
-    const[loggedIn, setLoggedIn] = useState(false);
-    const[userList, setUserList] = useState([]);
+    const[loggedIn, setLoggedIn] = useState(
+        JSON.parse(localStorage.getItem('log')) ?? false);
+    const[userList, setUserList] = useState(
+        JSON.parse(localStorage.getItem('users')) ?? []);
+    const[currentUser, setCurrentUser] = useState(
+        JSON.parse(localStorage.getItem('curr')) ?? 0);
+
+    useEffect(() => {
+        localStorage.setItem('users', JSON.stringify(userList));
+    }, [userList]);
     
+    // Moves to signinpage and always updates with currentUser values
+    useEffect(() => {
+        localStorage.setItem('log', JSON.stringify(loggedIn));
+        document.getElementById("currUser").innerHTML = userList[currentUser].username;
+        document.getElementById("currPoints").innerHTML = userList[currentUser].points;
+    }, [loggedIn]);
+
+    useEffect(() => {
+        localStorage.setItem('curr',currentUser);   
+    }, [currentUser]);
+
     // Updates list of all accounts
     const updateList = () => {
         setUserList([...userList, {
@@ -52,12 +71,10 @@ export default function VIP(){
             if ((userList[i].username == userName) && (userList[i].password == passWord)){
                 alert("User: " +userName+ " Logged in!");
                 // Will now show this user's information
-                currentUser = i;
+                setCurrentUser(i);
                 // Hides login and shows to view and use points in checkout
                 setLoggedIn(true);
-                document.getElementById("currUser").innerHTML = userList[currentUser].username;
-                document.getElementById("currPoints").innerHTML = userList[currentUser].points;
-                return;
+                return setCurrentUser(i);
             }
         }
         // Informs the user of an incorrect input
@@ -69,27 +86,23 @@ export default function VIP(){
     function logOut(e){
         e.preventDefault();
         setLoggedIn(false);
-        currentUser = null;
+        setCurrentUser(0);
         alert("Successfully logged out!");
     }
 
-
-
-    // The currently logged in user, used for calculating points earned/spent
-    var currentUser;
     // $1 spent is equal to 10 points
     // 100 points are equal to $1 off
     // User chooses how many points they would like to spend
     function spendPoints(pts) {
         if (userList[currentUser].points < pts){
-            console.log("You cannot use more than your total amount of points!");
+            alert("You cannot use more than your total amount of points!");
             return;
         }
         else {
             userList[currentUser].points -= pts;
             totalPrice -= pts * .01;
-            console.log(userList[currentUser].points+ " Points Remaining");
-            return console.log("$" +totalPrice+ " is the remaining price");
+            alert(userList[currentUser].points+ " Points Remaining");
+            return alert("$" +totalPrice+ " is the remaining price");
         }
     }
 
@@ -98,8 +111,8 @@ export default function VIP(){
         if (totalPrice > 0){
             var earnedPoints = totalPrice * 10;
             userList[currentUser].points += earnedPoints;
-            console.log(earnedPoints+ " Points Earned!");
-            return console.log("You now have " +userList[currentUser].points+ " Total Points!");
+            alert(earnedPoints+ " Points Earned!");
+            return alert("You now have " +userList[currentUser].points+ " Total Points!");
         }         
     }
     // test values 
@@ -116,8 +129,8 @@ export default function VIP(){
     return(
         <>
         <div id="signIn" className={`SigninBox ${(!loggedIn) ? '': 'hidden'}`}>
-            <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" minlength = "5" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
-            <h1 align="center"> <b>Password</b><input className="infoBox" id="passInput" type="password" required minLength="8" maxLength="20" value={passWord} onChange={e => setPassWord(e.target.value)}/></h1>
+            <h1 align="center"> <b>Username</b><input className="infoBox" id="userInput" maxLength="10" value={userName} onChange={e => setUserName(e.target.value)}/></h1>
+            <h1 align="center"> <b>Password</b><input className="infoBox" id="passInput" type="password" required maxLength="20" value={passWord} onChange={e => setPassWord(e.target.value)}/></h1>
             <button type="submit" className="signinButton" onClick={(e) => { logIn(e); document.getElementById("userInput").value = ""; document.getElementById("passInput").value = "";} }>Sign in</button>
             <button type="submit" className="signinButton" onClick={(e) => { signUp(e); } }>Sign Up</button>
         </div>
