@@ -5,16 +5,21 @@
 //      -legitimate UI
 import React, { useState, useEffect } from 'react';
 import './checkout.css';
+import Nav from './NavbarComp/Nav.js';
+import { points } from './NavbarComp/VIP.js';
 
-function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
+function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0.0);
     const [returning, setReturning] = useState(true); //if not returning, we are here!
     const [isVisible, setIsVisible] = useState(true);
-    const [userLoggedIn, setUserLoggedIn] = useState(true);
+    const [userLoggedIn, setUserLoggedIn] = useState(JSON.parse(localStorage.getItem('log')) ?? false); //set not needed
     const [paying, setPaying] = useState(false);
-    const [cardNumber, setCardNumber] = useState('');
-    const [vipPoints, setVipPoints] = useState(100);
+
+    //VIP stuff
+    const [vipPoints, setVipPoints] = useState(points);
+    const [vipCost, setVipCost] = useState(0.0);
+    const [vipGain, setVipGain] = useState(0);
 
 
     class MenuItem {
@@ -37,6 +42,8 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
         console.log("calculating...");
         let total = cartItems.reduce((acc, item) => acc + item.price, 0);
         setTotalPrice(total);
+        setVipGain(obtainPoints());
+        setVipCost(total + spendPoints(vipPoints));
         console.log("total: " + total);
         console.log("total price: " + totalPrice);
     }
@@ -51,6 +58,11 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
         calcTotal();
         showCheckout();
     }, [cartItems]); //dependency on cartItems, any changes to cartItems re-apply this useEffect
+
+    //change VIP point total when it changes in VIP.js
+    useEffect(() => {
+        setVipPoints(points);
+    }, [points]); //dependency on the points value
 
     function prompt() {
         //logic to prompt user for VIP register/login
@@ -72,32 +84,56 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
         //user not logged in, card only - this is handled through the states
         setPaying(true);
         setIsVisible(false);
+        //setUserLoggedIn(JSON.parse(localStorage.getItem('log')) ?? false);
     }
 
     function pay() {
-        //check the val for a proper value:
-        var val = document.getElementById('cardNumber').value;
-        var vip = document.getElementById('useVIP');
-        if (val.trim() === '') {
-            alert("Field blank, please enter a card number");
-            return;
-        }
-
-        //handle the payment
-        if (vip.checked) {
-            if (val == 1234) {
-                alert("Payment success! " + vipPoints + " points were used to deduct from your total price!");
-                hideCheckout();
-                setCheckoutFalse();
+        if (userLoggedIn) {
+            //check the val for a proper value:
+            var val = document.getElementById('cardNumber').value;
+            var vip = document.getElementById('useVIP');
+            if (val.trim() === '') {
+                alert("Field blank, please enter a card number");
+                return;
             }
-            else if (val == 6789) {
-                alert("Payment failed, please try again or use a different card!");
+
+            //handle the payment
+            if (vip.checked) {
+                if (val == 1234) {
+                    alert("Payment success! VIP points were used to deduct from your total price!");
+                    hideCheckout();
+                    setCheckoutFalse();
+                }
+                else if (val == 6789) {
+                    alert("Payment failed, please try again or use a different card!");
+                }
+                else {
+                    alert("Error: Please enter a proper card number!");
+                }
             }
             else {
-                alert("Error: Please enter a proper card number!");
+                if (val == 1234) {
+                    alert("Payment success!");
+                    hideCheckout();
+                    setCheckoutFalse();
+                }
+                else if (val == 6789) {
+                    alert("Payment failed, please try again or use a different card!");
+                }
+                else {
+                    alert("Error: Please enter a proper card number!");
+                }
             }
         }
-        else{
+        else {
+            //check the val for a proper value:
+            var val = document.getElementById('cardNumber2').value;
+            if (val.trim() === '') {
+                alert("Field blank, please enter a card number");
+                return;
+            }
+
+            //handle the payment
             if (val == 1234) {
                 alert("Payment success!");
                 hideCheckout();
@@ -112,11 +148,6 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
         }
     }
 
-    function vipLogin() {
-        //logic to send to the vip login screen then continue the payment
-        alert("Need to call the login for VIP members here!")
-    }
-
     function hideCheckout() {
         setReturning(true);
         setPaying(false);
@@ -124,6 +155,14 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
 
     function showCheckout() {
         setReturning(false);
+    }
+
+    function spendPoints(pts) {
+        return -(pts * 0.01);
+    }
+
+    function obtainPoints() {
+        return (totalPrice * 10);
     }
 
     return (
@@ -143,13 +182,15 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
                 <h1>You're not a VIP Member!</h1>
                 <p>VIP Members gain points on every purchase!</p>
                 <p>Use points to purchase items and receive discounts!</p>
-                <button className='buttons' onClick={paymentScreen}>Continue as Guest</button>
-                <button className='buttons' onClick={vipLogin}>Register!</button>
+                <p>Click the VIP tab in the UPPER RIGHT to register / log in!</p>
+                <button className='buttons' onClick={paymentScreen}>Continue</button>
             </div>
             <div className={`payment ${(paying && userLoggedIn && !returning) ? '' : 'hidden'}`}>
                 <h1>Payment</h1>
-                <p>Points: ---</p>
-                <p>Total Amount: ${totalPrice.toFixed(2)}</p>
+                <p>Points: {vipPoints}</p>
+                <p>Total price: ${totalPrice.toFixed(2)}</p>
+                <p>Price after points deduction: ${vipCost.toFixed(2)}</p>
+                <p>Points gained if not spent: {vipGain.toFixed(0)}</p>
                 <form id='paymentForm' onSubmit={() => { setCheckoutFalse(); hideCheckout(); }}>
                     <p>
                         <label htmlFor='cardNumber'>Enter your card number</label>
@@ -164,13 +205,13 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue }) {
             </div>
             <div className={`payment ${(paying && !userLoggedIn && !returning) ? '' : 'hidden'}`}>
                 <h1>Payment</h1>
-                <form onSubmit={() => { setCheckoutFalse(); hideCheckout(); }}>
+                <form id='paymentForm2' onSubmit={() => { setCheckoutFalse(); hideCheckout(); }}>
                     <p>
-                        <label htmlFor='cardNumber'>Enter your card number</label>
-                        <input type='number' id='cardNumber' />
+                        <label htmlFor='cardNumber2'>Enter your card number</label>
+                        <input type='number' id='cardNumber2' />
                     </p>
                     <button className='buttons' type='button' onClick={() => { setCheckoutFalse(); hideCheckout(); }}>Return to order</button>
-                    <button className='buttons' type='button' onClick={pay}>Pay Now</button>
+                    <button className='buttons' type='submit' form='paymentForm2' onClick={pay}>Pay Now</button>
                 </form>
             </div>
         </>

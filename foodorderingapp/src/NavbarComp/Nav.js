@@ -8,7 +8,7 @@ import './Style/NavBar.css'
 
 import { useState } from 'react';
 
-export default function Nav(){
+export default function Nav({handleShowNavItem}){
 
     let intialShow = [
         {id: 0, shown: false},

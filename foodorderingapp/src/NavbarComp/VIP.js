@@ -1,10 +1,12 @@
 import './Style/VIP.css'
 import {useState, useEffect} from 'react';
 
+const[totalPoints, setPoints] = [500, []];
+
 export default function VIP(){
     const[userName, setUserName] = useState('');
     const[passWord, setPassWord] = useState('');
-    const[totalPoints, setPoints] = useState(500);
+    //total points moved from here to global, needed for export
     const[loggedIn, setLoggedIn] = useState(
         JSON.parse(localStorage.getItem('log')) ?? false);
     const[userList, setUserList] = useState(
@@ -146,5 +148,6 @@ export default function VIP(){
         </div>
         </>
     );
-
 }
+
+export const points = totalPoints;
