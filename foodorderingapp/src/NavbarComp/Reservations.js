@@ -224,6 +224,30 @@ if(tableD !== -1){
             <option value="8" disabled = {tableData[7]}>Table 8</option>
           </select>
         </div>
+<form class="reservation-form">
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+  </div>
+  <div class="form-group">
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+  </div>
+  <div class="form-group">
+    <label for="guests">Number of guests:</label>
+    <select id="guests" name="guests" required>
+      <option value="">Select number of guests</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </div>
+  <div class="resButton">
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
         <button type="submit" onClick={() =>handleSubmit()}>Make Reservation</button>
       </div> )}
       {!show && showBoth && (
@@ -242,6 +266,8 @@ if(tableD !== -1){
         
         </div>
       )}
+      
+      
   {showEdit && ( <div className="reservation-form">
  <h1>Please enter your phone number to edit your reservation</h1>
 
