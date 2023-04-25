@@ -18,12 +18,6 @@ button{
 }
 
 .App {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f1f1f1;
   text-align: center;
   margin-right: 7%;
   margin-left: 7%;
@@ -35,8 +29,8 @@ button{
 .food-options-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  position: fixed;
+  /* align-items: flex-start; */
+  /* position: fixed; */
   top: 0;
   left: 0;
   padding: 1rem;
