@@ -15,6 +15,7 @@ function App() {
     <div className="App">
       <Nav />
     </div>
+  )
 
 
 function ReservationForm() {
@@ -78,8 +79,6 @@ function ReservationForm() {
   );
 }
 
-export default ReservationForm;
-  );
-}
 
+}
 export default App;

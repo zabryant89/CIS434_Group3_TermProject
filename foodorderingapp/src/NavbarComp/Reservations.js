@@ -227,11 +227,11 @@ if(tableD !== -1){
 
         <div class="form-group">
           <label for="date">Date:</label>
-          <input type="date" id="date" name="date" required>
+          <input type="date" id="date" name="date" required></input>
         </div>
         <div class="form-group">
           <label for="time">Time:</label>
-          <input type="time" id="time" name="time" required>
+          <input type="time" id="time" name="time" required></input>
         </div>
         <div class="form-group">
           <label for="guests">Number of guests:</label>
