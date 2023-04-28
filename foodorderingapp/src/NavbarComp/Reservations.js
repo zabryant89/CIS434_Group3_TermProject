@@ -166,9 +166,9 @@ if(tableD !== -1){
     
     )
 
-  console.log(tableChange);
+ // console.log(tableChange);
   localStorage.setItem("Table-data", JSON.stringify(tableChange)); 
-
+    console.log('changed Table-data');
     localStorage.removeItem(phone);
     console.log('Removed item from storage');
   }
@@ -231,9 +231,9 @@ if(tableD !== -1){
 
        <h1>Thank you for your reservation {name}! </h1>
 
-       <h1>Your estimated wait time is 20 minutes and the current time {time}</h1>
+       <h1>Your estimated wait time is 20 minutes and the current time is {time}</h1>
 
-       <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready. ": "when Table " + table +" is ready."} </h1>
+       <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready for you. ": "when Table " + table +" is ready."} </h1>
         <div className="resButtons">
        <div> <button onClick={handleAnother}>Make another reservation</button> </div>
   
