@@ -5,7 +5,7 @@ export default function Table(){
 
     let intialTableState = [
         {id: 0, selected: false, display:"Table"},
-        {id: 1, selected: false, display:  "Table"},
+        {id: 1, selected: false, display: "Table"},
         {id: 2, selected: false, display: "Table"},
         {id: 3, selected: false, display: "Table"},
         {id: 4, selected: false, display: "Table"},
