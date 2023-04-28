@@ -17,6 +17,60 @@
   padding-right: 2%;
   box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
+.time-input {
+  font-size: 30px;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  border: solid lightblue;
+  width: 30%;
+}
+
+.time-label {
+  font-size: 30px;
+  align-items: left;
+}
+
+.guests {
+  font-size: 30px;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  border: solid lightblue;
+}
+
+.guests-label {
+  font-size: 30px;
+  align-items: left;
+}
+
+.guests-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.guests-container label {
+  margin-right: 20px;
+}
+
+.guests-container select {
+  font-size: 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(67, 178, 195);
+  color: white;
+  padding: 0.5%;
+}
+
+
 
 
 .form-group{

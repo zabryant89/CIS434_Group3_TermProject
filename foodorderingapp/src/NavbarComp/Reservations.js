@@ -15,8 +15,11 @@ const [showBoth, setShowBoth] = useState(true);
 const [message, setMessage] = useState('');
 const [editBut, setEditBut] = useState(false);
 
-// eslint-disable-next-line
+
 const [tableD, setTableD] = useState((localStorage.getItem("Table-data") ? JSON.parse(localStorage.getItem("Table-data")) : -1));
+const d = new Date();
+const time = ( (d.getHours() >= 12) ? (d.getHours() % 12 )  : d.getHours()   ) + ':' + d.getMinutes() + (   (d.getHours() >= 12) ? " pm" : " am" ) + ".";
+
 
 
 const intialTableState = [
@@ -41,10 +44,11 @@ const intialTableState = [
     }] ; 
   
    
-   localStorage.setItem(phone, JSON.stringify(res)); //OPTIONAL: store reservation in local storage
+   localStorage.setItem(phone, JSON.stringify(res));
 
 
 if(tableD !== -1){
+  setTableD(JSON.parse(localStorage.getItem("Table-data")));
       const newTableData = tableD.map(t => 
         {
           if(t.id === (table - 1) ){
@@ -140,6 +144,31 @@ if(tableD !== -1){
     setShowBoth(true);
     setShoWEdit(false);
 
+    const newRes = JSON.parse(localStorage.getItem(phone));
+    const freeTable = newRes.map(r => r.Rtable);
+
+   const tableData = JSON.parse(localStorage.getItem("Table-data"));
+
+   const tableChange = tableData.map(t => 
+    {
+      if(t.id === (freeTable - 1)){
+        return{
+          ...t,
+          selected: false,
+          display: "Table"
+        }
+      }else{
+        return{
+          ...t
+        }
+      }
+    }
+    
+    )
+
+  console.log(tableChange);
+  localStorage.setItem("Table-data", JSON.stringify(tableChange)); 
+
     localStorage.removeItem(phone);
     console.log('Removed item from storage');
   }
@@ -195,6 +224,27 @@ if(tableD !== -1){
             <option value="8" disabled = {tableData[7]}>Table 8</option>
           </select>
         </div>
+
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required></input>
+        </div>
+        <div class="form-group">
+          <label for="time">Time:</label>
+          <input type="time" id="time" name="time" required></input>
+        </div>
+        <div class="form-group">
+          <label for="guests">Number of guests:</label>
+          <select id="guests" name="guests" required>
+            <option value="">Select number of guests</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+
         <button type="submit" onClick={() =>handleSubmit()}>Make Reservation</button>
       </div> )}
       {!show && showBoth && (
@@ -202,7 +252,7 @@ if(tableD !== -1){
 
        <h1>Thank you for your reservation {name}! </h1>
 
-       <h1>Your estimated wait time is 20 minutes</h1>
+       <h1>Your estimated wait time is 20 minutes and the current time {time}</h1>
 
        <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready. ": "when Table " + table +" is ready."} </h1>
         <div className="resButtons">
@@ -213,6 +263,8 @@ if(tableD !== -1){
         
         </div>
       )}
+      
+      
   {showEdit && ( <div className="reservation-form">
  <h1>Please enter your phone number to edit your reservation</h1>
 
