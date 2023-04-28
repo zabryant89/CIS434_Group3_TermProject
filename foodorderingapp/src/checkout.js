@@ -39,13 +39,17 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
     }
 
     function calcTotal() {
+        //need to use total as the var here
+        //see report for why useStates do not update immediately
         console.log("calculating...");
         let total = cartItems.reduce((acc, item) => acc + item.price, 0);
         setTotalPrice(total);
-        setVipGain(obtainPoints());
+        var temp = obtainPoints(total);
+        setVipGain(temp);
         setVipCost(total + spendPoints(vipPoints));
         console.log("total: " + total);
         console.log("total price: " + totalPrice);
+        console.log("vipGain: " + vipGain);
     }
 
     useEffect(() => {
@@ -161,8 +165,8 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
         return -(pts * 0.01);
     }
 
-    function obtainPoints() {
-        return (totalPrice * 10);
+    function obtainPoints(price) {
+        return (price * 10);
     }
 
     return (
