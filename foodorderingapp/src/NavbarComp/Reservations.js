@@ -5,9 +5,12 @@ import './Style/Reservation.css'
 export default function Reservations(){
 
 
-const [name, setName] = useState('')
-const [phone, setPhone] = useState('')
-const [table, setTable] = useState(-1)
+const [name, setName] = useState('');
+const [phone, setPhone] = useState('');
+const [table, setTable] = useState(-1);
+const [time, setTime] = useState('');
+const [date, setDate] = useState('');
+const [guest, setGuest] = useState(1);
 
 const [show, setShow] = useState(true); 
 const [showEdit, setShoWEdit] = useState(false); 
@@ -17,8 +20,8 @@ const [editBut, setEditBut] = useState(false);
 
 
 const [tableD, setTableD] = useState((localStorage.getItem("Table-data") ? JSON.parse(localStorage.getItem("Table-data")) : -1));
-const d = new Date();
-const time = ( (d.getHours() >= 12) ? (d.getHours() % 12 )  : d.getHours()   ) + ':' + d.getMinutes() + (   (d.getHours() >= 12) ? " pm" : " am" ) + ".";
+//const d = new Date();
+//const ftime = ( (d.getHours() >= 12) ? (d.getHours() % 12 )  : d.getHours()   ) + ':' + d.getMinutes() + (   (d.getHours() >= 12) ? " pm" : " am" ) + ".";
 
 
 
@@ -41,6 +44,9 @@ const intialTableState = [
             Rname: name,
             Rphone: phone,
             Rtable: Number(table),
+            Rtime: time,
+            Rdate: date,
+            Rguest: guest
     }] ; 
   
    
@@ -166,9 +172,9 @@ if(tableD !== -1){
     
     )
 
- // console.log(tableChange);
+  console.log(tableChange);
   localStorage.setItem("Table-data", JSON.stringify(tableChange)); 
-    console.log('changed Table-data');
+
     localStorage.removeItem(phone);
     console.log('Removed item from storage');
   }
@@ -224,6 +230,32 @@ if(tableD !== -1){
             <option value="8" disabled = {tableData[7]}>Table 8</option>
           </select>
         </div>
+
+        <div className="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required
+           onChange={(e) => setDate(e.target.value)}
+          ></input>
+        </div>
+        <div className="form-group">
+          <label for="time">Time:</label>
+          <input type="time" id="time" name="time" required
+           onChange={(e) => setTime(e.target.value)}
+          ></input>
+        </div>
+        <div className="form-group">
+          <label for="guests">Number of guests:</label>
+          <select id="guests" name="guests" required
+           onChange={(e) => setGuest(e.target.value)}>
+            <option value="">Select number of guests</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+
         <button type="submit" onClick={() =>handleSubmit()}>Make Reservation</button>
       </div> )}
       {!show && showBoth && (
@@ -231,9 +263,9 @@ if(tableD !== -1){
 
        <h1>Thank you for your reservation {name}! </h1>
 
-    
+       <h1>We look foward to seeing you on {date} at {time} with your {guest} guests!</h1>
 
-       <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready for you. ": "when Table " + table +" is ready."} </h1>
+       <h1>We will call you at {phone} {(table === -1 || table === 0) ? "when we are ready. ": "when Table " + table +" is ready."} </h1>
         <div className="resButtons">
        <div> <button onClick={handleAnother}>Make another reservation</button> </div>
   
@@ -242,6 +274,8 @@ if(tableD !== -1){
         
         </div>
       )}
+      
+      
   {showEdit && ( <div className="reservation-form">
  <h1>Please enter your phone number to edit your reservation</h1>
 
@@ -273,7 +307,6 @@ if(tableD !== -1){
   );
     
 }
-
 
 
 
