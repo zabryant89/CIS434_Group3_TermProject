@@ -68,6 +68,7 @@ select option:first-child {
 
 select:valid {
   color: black;
+}
 
 .App {
   text-align: center;
