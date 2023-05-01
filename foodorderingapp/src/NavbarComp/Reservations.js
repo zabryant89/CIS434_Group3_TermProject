@@ -225,15 +225,15 @@ if(tableD !== -1){
           </select>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label for="date">Date:</label>
           <input type="date" id="date" name="date" required></input>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="time">Time:</label>
           <input type="time" id="time" name="time" required></input>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="guests">Number of guests:</label>
           <select id="guests" name="guests" required>
             <option value="">Select number of guests</option>

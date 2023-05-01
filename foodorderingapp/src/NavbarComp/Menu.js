@@ -34,7 +34,7 @@ function Menu() {
   };
 
   return (
-    <div className="App">
+    <div className="Menu-container">
       <div className="food-options-container">
         <h2 className="food-options-title">Food Options</h2>
         {foodOptions.map((food) => (

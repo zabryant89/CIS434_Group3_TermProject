@@ -1,6 +1,13 @@
+.checkout-container{
+    border: 5px solid lightblue;
+    padding-bottom: 5%;
+    border-radius: 60px;
+}
+
+
 .checkout {
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   /* background-color: #FFFFFF;*/
+   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
     margin: auto;
     flex-basis: calc(90% - 20px);
     padding: 20px;
@@ -39,23 +46,24 @@
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: blue;
+    background-color:  rgb(67, 178, 195);
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    font-size: 40px;
 }
 
 .buttons:hover,
 .buttons:focus {
-    background-color: darkblue;
+    background-color: magenta;
     transform: translateY(-2px);
 }
 
 .buttons:active {
-    background-color: #2c7db2;
+    background-color:  rgb(67, 178, 195);
     transform: translateY(0px);
     box-shadow: none;
     outline: none;

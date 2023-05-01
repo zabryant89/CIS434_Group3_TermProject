@@ -4,9 +4,9 @@
 //      -hard code use cases: card # 1234 always has enough funds, card # 6789 always declined
 //      -legitimate UI
 import React, { useState, useEffect } from 'react';
-import './checkout.css';
-import Nav from './NavbarComp/Nav.js';
-import { points } from './NavbarComp/VIP.js';
+import './Style/checkout.css';
+
+import { points } from './VIP.js';
 
 function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
     const [cartItems, setCartItems] = useState([]);
@@ -170,7 +170,7 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
     }
 
     return (
-        <>
+        <div className="checkout-container">
             <div className={`checkout ${(isVisible && !returning) ? '' : 'hidden'}`}>
                 <h1 className='checkout__item__title'>Checkout</h1>
                 <ul className='checkout__item__list'>
@@ -218,7 +218,7 @@ function Checkout({ setCheckoutFalse, setCheckoutTrue, handleShowNavItem }) {
                     <button className='buttons' type='submit' form='paymentForm2' onClick={pay}>Pay Now</button>
                 </form>
             </div>
-        </>
+        </div>
     );
 }
 

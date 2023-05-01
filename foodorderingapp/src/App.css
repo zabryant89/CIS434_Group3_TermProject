@@ -10,14 +10,11 @@ button{
 }
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons:focus {
+  background-color: magenta;
+  transform: translateY(-2px);
 }
+/*
 .reservations {
   margin-top: 50px;
 }
@@ -78,12 +75,13 @@ select:valid {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-radius: 7%;
 }
-
+*/
+/*
 .food-options-container {
   display: flex;
   flex-direction: column;
   /* align-items: flex-start; */
-  /* position: fixed; */
+  /* position: fixed; 
   top: 0;
   left: 0;
   padding: 1rem;
@@ -183,3 +181,4 @@ select:valid {
   line-height: 1.5;
   margin-bottom: 1rem;
 }
+*/

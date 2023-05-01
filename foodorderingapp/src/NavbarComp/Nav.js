@@ -11,7 +11,7 @@ import { useState } from 'react';
 export default function Nav({handleShowNavItem}){
 
     let intialShow = [
-        {id: 0, shown: false},
+        {id: 0, shown: true},
         {id: 1, shown: false},
         {id: 2, shown: false},
         {id: 3, shown: false},
