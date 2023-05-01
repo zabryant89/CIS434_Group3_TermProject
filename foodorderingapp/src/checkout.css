@@ -1,0 +1,66 @@
+.checkout {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    flex-basis: calc(90% - 20px);
+    padding: 20px;
+    display: block;
+}
+
+.checkout__item__title {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+}
+
+.checkout__item__list {
+    margin: 0 auto;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.checkout__item {
+    background-color: #FFFFFF;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 400px;
+    flex-basis: calc(90% - 20px);
+    padding: 20px;
+}
+
+.checkout__final__price {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.buttons {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: blue;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.buttons:hover,
+.buttons:focus {
+    background-color: darkblue;
+    transform: translateY(-2px);
+}
+
+.buttons:active {
+    background-color: #2c7db2;
+    transform: translateY(0px);
+    box-shadow: none;
+    outline: none;
+}
+
+.hidden{
+    display: none;
+}
