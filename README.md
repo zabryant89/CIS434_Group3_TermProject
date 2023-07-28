@@ -1,5 +1,8 @@
 # CIS434_Group3_TermProject
 
+## Project Link
+https://cis434-termproject-group3-dineinapp.netlify.app/
+
 ## Discord
 Join here: https://discord.gg/JxpzZBKS (expires 3/29/2023)
 
